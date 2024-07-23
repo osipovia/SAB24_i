@@ -12,7 +12,7 @@ current_date = "25.08.2024"
 # Транзакции за день
 transaction = [[datetime.strptime("22.07.2024", "%d.%m.%Y"), 1, 1000],
                [datetime.strptime("22.07.2024", "%d.%m.%Y"), 2, 3000],
-               [datetime.strptime("23.07.2024", "%d.%m.%Y"), 1, 500],
+               [datetime.strptime("23.07.2024", "%d.%m.%Y"), 2, 500],
                [datetime.strptime("23.08.2024", "%d.%m.%Y"), 1, 4000]]
 
 # Преобразование строковых дат в объекты datetime
@@ -62,4 +62,8 @@ for day in range(1, numb_day + 1):
     # Округление до сотых
     current_loan_balance = round(current_loan_balance, 2)
 
-    # Убежда
+    # Убеждаемся, что текущий остаток займа не стал отрицательным
+    if current_loan_balance < 0:
+        current_loan_balance = 0
+
+print(f"Текущий остаток займа: {round(current_loan_balance, 2)}")
